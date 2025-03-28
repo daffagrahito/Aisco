@@ -1,5 +1,7 @@
 package aisco.donation.pcreditcard;
-import java.util.Arrays;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -30,7 +32,6 @@ public class DonationImpl extends DonationComponent {
         this.paymentStatus = paymentStatus != null ? paymentStatus : "Pending"; // Default ke "Pending" jika null
     }
 
-    @Override
     public DonationImpl(String name, String email, String phone, int amount, String paymentMethod, String CVC, String cardNumber, Date expiryDate) {
         this(name, email, phone, amount, paymentMethod, CVC, cardNumber, expiryDate, "Pending");
     }
@@ -44,18 +45,36 @@ public class DonationImpl extends DonationComponent {
     }
 
     public void addDonation() {
-        donationList.add(new DonationImpl("Anisa", "anisa@jmail.com", "+62878 6654 3321", 2500000, "Credit Card", "123", "4111111111111111", new Date(), "Completed"));
-        donationList.add(new DonationImpl("Dave", "dave@jmail.com", "+62828 2345 3091", 500000, "Credit Card", "456", "4222222222222222", new Date(), "Pending"));
-        donationList.add(new DonationImpl("Edo", "edo@jmail.com", "+62828 2345 3091", 300000, "Credit Card", "789", "4333333333333333", new Date(), "Completed"));
-    }
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(2029, Calendar.MARCH, 15);
+        Date expiryDate1 = calendar.getTime();
     
-    public void getDonation() {
-    	System.out.println(Arrays.asList(donationList));
+        calendar.set(2026, Calendar.JUNE, 30);
+        Date expiryDate2 = calendar.getTime();
+    
+        calendar.set(2027, Calendar.DECEMBER, 31);
+        Date expiryDate3 = calendar.getTime();
+
+        donationList.add(new DonationImpl("Anisa", "anisa@jmail.com", "+62878 6654 3321", 2500000, "Credit Card", "123", "4111111111111111", expiryDate1, "Completed"));
+        donationList.add(new DonationImpl("Dave", "dave@jmail.com", "+62828 2345 3091", 500000, "Credit Card", "456", "4222222222222222", expiryDate2, "Pending"));
+        donationList.add(new DonationImpl("Edo", "edo@jmail.com", "+62828 2345 3091", 300000, "Credit Card", "789", "4333333333333333", expiryDate3, "Completed"));
     }
+
+    public void getDonation() {
+        System.out.println(Arrays.asList(donationList));
+    }
+
     
     @Override
     public String toString() {
-        return "- Donasi " + name + ": " + amount + " Payment Method: " + paymentMethod + " Status: " + paymentStatus + "\n";
+        String maskedCardNumber = "**** **** **** " + cardNumber.substring(cardNumber.length() - 4);
+        return "- Donasi " + name + ":\n" +
+            "  Amount: " + amount + "\n" +
+            "  Payment Method: " + paymentMethod + "\n" +
+            "  Card Number: " + maskedCardNumber + "\n" +
+            "  Expiry Date: " + expiryDate + "\n" +
+            "  Status: " + paymentStatus + "\n";
     }
 
 }

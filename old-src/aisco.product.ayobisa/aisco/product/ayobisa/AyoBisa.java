@@ -56,7 +56,7 @@ public class AyoBisa {
     }
 
     public static void main(String[] args) {
-        System.out.println("Product AyoBisa");
+        System.out.println("Product AyoBisa - Transfer Payment");
 
         List<Program> programs = addProgram();
         System.out.println(programs);

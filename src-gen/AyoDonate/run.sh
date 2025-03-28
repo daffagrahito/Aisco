@@ -1,6 +1,6 @@
 #!/bin/bash
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home
-export PATH=$PATH:$JAVA_HOME/bin
+source ~/.zshrc  
+
 cleanup() {
     pkill -P $$
     exit 1

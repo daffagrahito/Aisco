@@ -113,7 +113,7 @@ public class BisaYok {
     }
 
     public static void main(String[] args) {
-        System.out.println("Product BisaYok");
+        System.out.println("Product BisaYok - E-Wallet Payment");
 
         List<Program> programs = addProgram();
         System.out.println(programs);
