@@ -6,8 +6,6 @@ import java.util.Arrays;
 
 import aisco.donation.core.*;
 import aisco.donation.core.DonationComponent;
-import payment.page.core.*;
-import payment.page.PaymentPageFactory;
 
 public class DonationImpl extends DonationComponent {
     private List<Object> donationList;
@@ -15,9 +13,7 @@ public class DonationImpl extends DonationComponent {
     private String cardNumber;
     private Date expiryDate;
     private String paymentStatus; // Status pembayaran (e.g., "Pending", "Completed")
-    PaymentPage payment;
 
-    // Constructor default
     public DonationImpl() {
         super();
         this.donationList = new ArrayList<>();
